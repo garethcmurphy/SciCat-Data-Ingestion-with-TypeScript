@@ -1,7 +1,6 @@
 "use strict";
-import * as os from "os";
-
 const rp = require("request-promise");
+
 
 class Ingestor {
   username = "ingestor";
@@ -85,6 +84,10 @@ class Ingestor {
       rejectUnauthorized: false,
       requestCert: true
     };
+    let data_array = [];
+    for (let i = 0; i < 3; i++) {
+      data_array.push(options3);
+    }
     try {
       const ingestr_response = await rp(options3);
       console.log(ingestr_response);
@@ -96,7 +99,15 @@ class Ingestor {
   }
 }
 
+function measurePromise(fn: () => Promise<any>): Promise<number> {
+  let onPromiseDone = () => Date.now() - start;
+  let start = Date.now();
+  return fn().then(onPromiseDone, onPromiseDone);
+}
 if (require.main === module) {
   const ingest = new Ingestor();
-  ingest.ingest();
+
+  measurePromise(() => ingest.ingest()).then(duration => {
+    console.log(`promise took ${duration} ms`);
+  });
 }
