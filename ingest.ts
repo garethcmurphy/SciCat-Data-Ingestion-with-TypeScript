@@ -89,7 +89,7 @@ class Ingestor {
       data_array.push(options3);
     }
     try {
-      const ingestr_response = await rp(options3);
+      const ingestr_response = await Promise.all(data_array);
       console.log(ingestr_response);
       return Promise.resolve(ingestr_response);
     } catch (error) {
