@@ -4,8 +4,10 @@ const rp = require("request-promise");
 class Ingestor {
   username = "ingestor";
   hostname = "catamel";
-  url_base = "http://catamel:3000/api/v3/";
-  url = this.url_base+"Users/login";
+  url_docker = "http://catamel:3000/api/v3/";
+  url_local = "http://localhost:3001/api/v3/";
+  url_base = this.url_docker;
+  url = this.url_base + "Users/login";
   rawdata = { username: "ingestor", password: "aman" };
   id: string;
 
@@ -73,8 +75,7 @@ class Ingestor {
       ]
     };
 
-    const url_ingest =
-      this.url_base+"Datasets?access_token=" + this.id;
+    const url_ingest = this.url_base + "Datasets?access_token=" + this.id;
     console.log(url_ingest);
     let options3 = {
       url: url_ingest,
