@@ -1,14 +1,18 @@
 {
   "name": "scicatingest",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ingest data to scicat",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "GPL-v3.0",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:garethcmurphy/scicatingest.git"
+  },
   "dependencies": {
     "@types/node": "^12.0.4",
     "request": "^2.88.0",
