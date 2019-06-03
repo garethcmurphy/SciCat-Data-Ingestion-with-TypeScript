@@ -1,7 +1,6 @@
 "use strict";
 const rp = require("request-promise");
 
-
 class Ingestor {
   username = "ingestor";
   hostname = "catamel";
@@ -85,7 +84,7 @@ class Ingestor {
       requestCert: true
     };
     let data_array = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 200; i++) {
       data_array.push(options3);
     }
     try {
